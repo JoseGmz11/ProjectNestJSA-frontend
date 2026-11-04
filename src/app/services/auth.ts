@@ -39,4 +39,15 @@ export class Auth {
       return false;
     }
   }
+
+  getRol(): string | null {
+    const token = localStorage.getItem('token');
+    if(!token) return null;
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.rol;
+    } catch (e) {
+      return null;
+    }
+  }
 }

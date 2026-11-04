@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Producto } from '../models/producto';
 import { ProductoService } from '../services/producto.service';
 import { RouterModule } from '@angular/router';
+import { Auth } from '../services/auth';
 
 import Swal from 'sweetalert2';
 
@@ -17,6 +18,7 @@ export class ListaProducto implements OnInit{
   listaVacia: string | undefined = undefined;
 
   constructor(
+    public authService: Auth,
     private productoService: ProductoService,
     private cdr: ChangeDetectorRef
   ){  }

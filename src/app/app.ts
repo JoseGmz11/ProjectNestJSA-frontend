@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
-
+import { RouterOutlet, RouterModule, Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Auth } from './services/auth';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +12,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class App {
   protected readonly title = signal('frontend');
+
+  constructor(
+    public auth: Auth,
+    private router: Router,
+  ) {}
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
 }
